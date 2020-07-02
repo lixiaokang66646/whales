@@ -1,2 +1,2 @@
 # whales
-用于储存文章
+[baifu](https://www.baidu.com)
