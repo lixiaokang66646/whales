@@ -50,4 +50,4 @@ reset命令的三个参数对比
 
 分支：
 
-![img](https://gitee.com/lixiaokang66646/whales_photo/raw/master/img/QQ%E5%9B%BE%E7%89%8720200709095955.jpg)
+![img](https://gitee.com/lixiaokang66646/whales_photo/raw/master/img/20200709095955.jpg)
