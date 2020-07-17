@@ -36,23 +36,23 @@
 
    
 
-   **配置加速器，可以更快的下载（拉取镜像）**
+**配置加速器，可以更快的下载（拉取镜像）**
 
-   - 配置加速器(阿里巴巴)
+- 配置加速器(阿里巴巴)
 
-     sudo vim /etc/docker/daemon.json
+  sudo vim /etc/docker/daemon.json
 
-     { "registry-mirrors": ["https://cs913o6k.mirror.aliyuncs.com"]  }
+  { "registry-mirrors": ["https://cs913o6k.mirror.aliyuncs.com"]  }
 
-   - 重新启动进程
+- 重新启动进程
 
-     sudo systemctl daemon-reload
+  sudo systemctl daemon-reload
 
-   - 重新启动服务
+- 重新启动服务
 
-     sudo systemctl restart docker
-     
-     
+  sudo systemctl restart docker
+  
+  
 
 ### docker 容器命令
 
@@ -60,126 +60,127 @@
 
 
 
-1. 创建容器 
+创建容器 
 
-   docker run 参数 --name=容器名称 镜像名称 /bin/bash(根进程)
+docker run 参数 --name=容器名称 镜像名称 /bin/bash(根进程)
 
-   -i:交互式
+-i:交互式
 
-   -t:终端
+-t:终端
 
-   -d:守护进程
+-d:守护进程
 
-   --name=容器名称:给创建的容器命名
+--name=容器名称:给创建的容器命名
 
-   
 
-2. 进入容器 
 
-   docker attach 容器名称/id(exit会关闭容器)
+进入容器 
 
-   docker exec -it 容器名称/id /bin/bash(exit不会关闭容器)
+docker attach 容器名称/id(exit会关闭容器)
 
-   
+docker exec -it 容器名称/id /bin/bash(exit不会关闭容器)
 
-3. 查看容器
 
-   docker ps 查看当前运行容器
 
-   docker ps -a 查看所有容器(包括历史创建容器)
+查看容器
 
-   
+docker ps 查看当前运行容器
 
-4. 停止/启动容器
+docker ps -a 查看所有容器(包括历史创建容器)
 
-   docker stop 容器名称/id 关闭容器
 
-   docker start 容器名称/id 运行容器
 
-   
+1.停止/启动容器
 
-5. 获取容器/镜像的元数据
+docker stop 容器名称/id 关闭容器
 
-   docker inspect 容器名称/id
+docker start 容器名称/id 运行容器
 
-   
 
-6. 删除容器(无法删除正在运行的容器)
 
-   docker rm 容器名称1/id1 [容器名称2/id2…]:删除多个容器
+2.获取容器/镜像的元数据
 
-   docker rm ‘docker ps -a -q’:删除所有容器
+docker inspect 容器名称/id
 
-   
 
-7. 查看容器日志（只能用attach进入）
 
-   docker logs 容器名称/id
+3.删除容器(无法删除正在运行的容器)
 
-   
+docker rm 容器名称1/id1 [容器名称2/id2…]:删除多个容器
 
-8. 文件拷贝
+docker rm ‘docker ps -a -q’:删除所有容器
 
-   docker cp 宿主机文件 容器名称:容器文件  将宿主机文件拷贝到容器上
 
-   docker cp 容器名称:容器文件 宿主机文件 将容器文件拷贝到宿主机上
 
-   
+4.查看容器日志（只能用attach进入）
 
-9. 目录挂载（只能创建时就进行挂载）
+docker logs 容器名称/id
 
-   
 
-   docker  run  -id  --name=c4  -v  /opt/:/usr/local/myhtml  镜像名
 
-   
+5.文件拷贝
 
-   就是在创建容器`docker run 参数 --name=容器名称 镜像名称`命令的 基础加上` -v  /opt/:/usr/local/myhtml`
+docker cp 宿主机文件 容器名称:容器文件  将宿主机文件拷贝到容器上
 
-   
+docker cp 容器名称:容器文件 宿主机文件 将容器文件拷贝到宿主机上
 
-   这条命令的意思是把Linux下的<kbd>/opt目录</kbd>与docker容器下的<kbd>/usr/local/myhtml</kbd>目录进行关联。这就是挂载，当你再需要往docker<kbd>/usr/local/myhtml</kbd>目录传文件时，只需要往<kbd>/opt目录</kbd>下传送即可。它会自动复制一份到<kbd>/usr/local/myhtml</kbd>目录下。
 
-   
 
-   可能出现的问题：如果你共享的是多级的目录，可能会出现权限不足的提示“Permission denied”。
+6.目录挂载（只能创建时就进行挂载）
 
-   这是因为CentOS7中的安全模块selinux把权限禁掉了，我们需要添加参数 `--privileged=true` 来解决挂载的目录没有权限的问题：
 
-   
 
-   docker  run  -id  --privileged=true  --name=c4  -v  /opt/:/usr/local/myhtml 镜像名
+docker  run  -id  --name=c4  -v  /opt/:/usr/local/myhtml  镜像名
+
+
+
+就是在创建容器`docker run 参数 --name=容器名称 镜像名称`命令的 基础加上` -v  /opt/:/usr/local/myhtml`
+
+
+
+这条命令的意思是把Linux下的<kbd>/opt目录</kbd>与docker容器下的<kbd>/usr/local/myhtml</kbd>目录进行关联。这就是挂载，当你再需要往docker<kbd>/usr/local/myhtml</kbd>目录传文件时，只需要往<kbd>/opt目录</kbd>下传送即可。它会自动复制一份到<kbd>/usr/local/myhtml</kbd>目录下。
+
+
+
+可能出现的问题：如果你共享的是多级的目录，可能会出现权限不足的提示“Permission denied”。
+
+这是因为CentOS7中的安全模块selinux把权限禁掉了，我们需要添加参数 `--privileged=true` 来解决挂载的目录没有权限的问题：
+
+
+
+docker  run  -id  --privileged=true  --name=c4  -v  /opt/:/usr/local/myhtml 镜像名
 
 ### docker镜像制作
 
-1. 拉取一个基础镜像（其始就是OS）
-   docker pull centos
+1.拉取一个基础镜像（其始就是OS）
+docker pull centos
 
-2. 创建一个交互式容器
-   docker run ‐it ‐‐name=mycentos centos:latest
+2.创建一个交互式容器
+docker run ‐it ‐‐name=mycentos centos:latest
 
-3. 软件上传：将宿主机Tomact上传到容器中
-   docker cp apache‐tomcat‐7.0.47.tar.gz mycentos:/root/
+3.软件上传：将宿主机Tomact上传到容器中
+docker cp apache‐tomcat‐7.0.47.tar.gz mycentos:/root/
 
-4. 在容器中安装jdk  
-   yum -y install java-1.8.0-openjdk*
+4.在容器中安装jdk  
+yum -y install java-1.8.0-openjdk*
 
-5. 在容器中安装tomcat
-   tar ‐zxvf apache‐tomcat‐7.0.47.tar.gz ‐C /usr/local/
+5.在容器中安装tomcat
+tar ‐zxvf apache‐tomcat‐7.0.47.tar.gz ‐C /usr/local/
 
-6. 将正在运行的容器提交为一个新的镜像
-   docker commit  mytomcat
+6.将正在运行的容器提交为一个新的镜像
+docker commit  mytomcat
 
-7. 容器运行：
-   1.端口映射&目录挂载
+7.容器运行：
 
-   docker run -itd --name=t1 ‐p 8888:8080 -v  /opt/test:/usr/local/apache‐tomcat‐7.0.47/webapps/test mytomcat
+1.端口映射&目录挂载
 
-   2.将war包或者html文件放到宿主机/opt/test文件下
+docker run -itd --name=t1 ‐p 8888:8080 -v  /opt/test:/usr/local/apache‐tomcat‐7.0.47/webapps/test mytomcat
 
-   3.运行tomcat
-   docker exec t1 /usr/local/apache‐tomcat‐7.0.47/bin/startup.sh
-   4.访问资源:http://宿主机地址:8888/test/资源
+2.将war包或者html文件放到宿主机/opt/test文件下
+
+3.运行tomcat
+docker exec t1 /usr/local/apache‐tomcat‐7.0.47/bin/startup.sh
+4.访问资源:http://宿主机地址:8888/test/资源
 
 ### 容器/镜像打包
 ​	镜像打包： 
