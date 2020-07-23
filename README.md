@@ -41,17 +41,12 @@
 ### 接口测试 :honey_pot:
 
 - [接口测试的介绍（详细文档）](https://blog.csdn.net/li2642530979/article/details/107435183)
-
 - [接口测试postman和python的区别](https://blog.csdn.net/li2642530979/article/details/107337551)
-
 - [postman接口测试-批量参数化(导入csv或txt文件)](https://blog.csdn.net/loner_fang/article/details/81382834)
-
 - [接口测试工具jemter的简单使用](https://blog.csdn.net/pengjiangchun/article/details/105707405?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase#四、Jmeter主要元件)
-
 - [jemter使用post方法时请求实体的一些问题](http://www.bubuko.com/infodetail-3137416.html)
-
+- [jemter设置代理服务器](https://blog.csdn.net/weixin_41971524/article/details/80097240)
 - [windows上postman+newman+jenkins做接口测试（练习用）](https://blog.csdn.net/li2642530979/article/details/107425619)
-
 - [windows上Ant+Jmeter+Jenkins做接口持续化集成（练习用）](https://blog.csdn.net/li2642530979/article/details/107418298)
 
 ### 养猫少年的Jenkins+Jmeter持续集成笔记:palm_tree:

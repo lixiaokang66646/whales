@@ -120,9 +120,9 @@ docker logs 容器名称/id
 
 5.文件拷贝
 
-docker cp 宿主机文件 容器名称:容器文件  将宿主机文件拷贝到容器上
+docker cp 宿主机文件 容器名称:容器文件 	 将宿主机文件拷贝到容器上
 
-docker cp 容器名称:容器文件 宿主机文件 将容器文件拷贝到宿主机上
+docker cp 容器名称:容器文件 宿主机文件	 将容器文件拷贝到宿主机上
 
 
 
@@ -155,19 +155,19 @@ docker  run  -id  --privileged=true  --name=c4  -v  /opt/:/usr/local/myhtml 镜�
 1.拉取一个基础镜像（其始就是OS）
 docker pull centos
 
-2.创建一个交互式容器
+2.创建一个容器
 docker run ‐it ‐‐name=mycentos centos:latest
 
 3.软件上传：将宿主机Tomact上传到容器中
 docker cp apache‐tomcat‐7.0.47.tar.gz mycentos:/root/
 
-4.在容器中安装jdk  
+4.在容器中安装jdk（需要进入容器）  
 yum -y install java-1.8.0-openjdk*
 
 5.在容器中安装tomcat
 tar ‐zxvf apache‐tomcat‐7.0.47.tar.gz ‐C /usr/local/
 
-6.将正在运行的容器提交为一个新的镜像
+6.将正在运行的容器提交为一个新的镜像（exit退出容器）
 docker commit  mytomcat
 
 7.容器运行：
@@ -180,7 +180,7 @@ docker run -itd --name=t1 ‐p 8888:8080 -v  /opt/test:/usr/local/apache‐tomca
 
 3.运行tomcat
 docker exec t1 /usr/local/apache‐tomcat‐7.0.47/bin/startup.sh
-4.访问资源:http://宿主机地址:8888/test/资源
+4.访问资源:http://宿主机地址:8888/test/资源（用来验证Tomcat）
 
 ### 容器/镜像打包
 ​	镜像打包： 
